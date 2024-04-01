@@ -1,0 +1,69 @@
+<!doctype html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport"
+          content="width=device-width, user-scalable=no, initial-scale=1.0, maximum-scale=1.0, minimum-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <title>Document</title>
+    <link rel="stylesheet" href="styles.css">
+    <script src="js/artyom.window.js"></script>
+    <script src="https://code.jquery.com/jquery-3.6.0.min.js"></script>
+    <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.7.1/jquery.min.js"></script>
+
+</head>
+
+
+<body>
+    <header>
+        <h1>PokeApi</h1>
+        <div class="search-box">
+            <input type="text" id="txt-buscar" placeholder="Busca tu Pokemon">
+            <button class="search-button" id="btn-buscar">Buscar</button>
+            <button class="voice-search-button" id="btn-activarVoz">Buscar por voz</button>
+        </div>
+    </header>
+    <div class="content">
+        <div class="left-column">
+            <div class="square-image" id="img1">
+                <img src="https://cdn.dribbble.com/users/521912/screenshots/14003796/media/94a2502f4e4d577395fec0e60e8372c2.gif"
+                    alt="Imagen 1" id="imagen1">
+            </div>
+            <div class="square-image" id="img2">
+                <img src="https://i.pinimg.com/originals/8a/4a/72/8a4a7213b43f4ec4f99db406be655f9e.gif" alt="Imagen 2" id="imagen2">
+            </div>
+        </div>
+        <div class="center-column">
+            <div class="large-image" id="img3">
+                <img src="https://www.bmimerchandise.com/flash/Home/Pokemon.jpg" alt="Imagen Grande">
+            </div>
+        </div>
+        <div class="right-column">
+            <table>
+                <tr>
+                    <th>Habilidades</th>
+                </tr>
+                <tr>
+                    <td id="habilidades">
+                        <ul>
+                            <p>¿Que habilidades tendrá tu pokemon?</p>
+                            <!-- Agrega más habilidades según sea necesario -->
+                        </ul>
+                    </td>
+                </tr>
+                <tr>
+                    <th>Estadísticas</th>
+                </tr>
+                <tr>
+                    <td id="estadisticas">
+                        <ul>
+                            <p>Conoce las estadísticas de tu pokemon</p>
+                        </ul>
+                    </td>
+                </tr>
+            </table>
+        </div>
+    </div>
+</body>
+<script src="js/main.js"></script>
+</html>
