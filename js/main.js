@@ -1,6 +1,10 @@
 var artyom = new Artyom();
 var artyomInitialized = false;
 
+function limpiarCajaTexto() {
+    document.getElementById("txt-buscar").value = "";
+}
+
 // Esta función se ejecuta cuando se hace clic en el botón de activación de voz
 document.querySelector("#btn-activarVoz").addEventListener('click', function () {
     if (!artyomInitialized) {
@@ -19,11 +23,22 @@ document.querySelector("#btn-activarVoz").addEventListener('click', function () 
     artyom.say("busqueda por voz activada");
 });
 
-$("#btn-buscar").on("click", function () {
-    buscarPokemon();
+$(document).ready(function() {
+    $('#btn-buscar').click(function() {
+        var searchTerm = $('#txt-buscar').val();
+        if (searchTerm.trim() === '') {
+            alert('Por favor ingresa un término de búsqueda');
+        } else {
+            buscarPokemon();
+            limpiarCajaTexto();
+        }
+    }
+    )
+
 });
 
 function buscarPokemon() {
+
     var searchTerm = $("#txt-buscar").val().toLowerCase(); // Obtener el valor del input
     console.log("Valor del input:", searchTerm); // Imprimir el valor del input en la consola
 
@@ -35,8 +50,17 @@ function buscarPokemon() {
             console.log(data.sprites.other.home.front_default);
             $("#img3").html(`<img src="${data.sprites.other.home.front_default}">`);
             console.log(data.stats[0].base_stat);
+            limpiarCajaTexto();
+        },
+        error: function (xhr, status, error) {
+            if (xhr.status === 404) {
+                alert("¡El Pokémon no fue encontrado!");
+            } else {
+                alert("Ha ocurrido un error: " + error);
+            }
         }
     });
+    
 
     mostrarInformacionPokemon(searchTerm);
 
@@ -44,7 +68,7 @@ function buscarPokemon() {
 }
 
 artyom.addCommands({
-    indexes: ["Hola", "adiós", "buscar *", "comando"],
+    indexes: ["Hola.", "adiós.", "buscar *", "comando"],
     smart: true,
     action: function (i, recognized) {
         if (i == 0) {
@@ -59,6 +83,7 @@ artyom.addCommands({
                 console.log("Pokemon: ", searchTerm);
                 $("#txt-buscar").val(searchTerm);
                 buscarPokemon();
+                limpiarCajaTexto();
             } else {
                 console.log("No se detectó un nombre de Pokémon.");
             }
